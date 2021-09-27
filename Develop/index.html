@@ -11,12 +11,59 @@
 <body>
     <!-- javascript should have at least 3-5 containers -->
     <!-- code below is just an example and can be removed/modified -->
-    <section>
-        <h1 id="question">Question here</h1>
+    <section id="pageTop">
+        <h1 id="highscores">View Highscores</h1>
+        <h1 id="timer">Time: 0</h1>
+    </section>
+
+    <section class="pageMiddle">
+        <h1>Coding Quiz Challenge</h1>
+        <p>Try to answer the following code-related questions within the time limit. 
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button>
+            Start Quiz
+        </button>
+    </section>
+
+    <section class="pageMiddle">
+        <h1 id="question">Commonly used data types DO NOT include:</h1>
         <ol id="answer">
-            <li>Answer here</li>
+            <li>strings</li>
+            <li>booleans</li>
+            <li>alerts</li>
+            <li>numbers</li>
         </ol>
     </section>
+
+    <section>
+    <hr>
+    <p id="correct">Correct!</p>
+    <p id="wrong">Wrong!</p>
+    </section>
+
+    <section class="pageMiddle">
+        <h1>All done!</h1>
+        <p>Your final score is 0.</p>
+        <form>
+            <label for="initals">Enter initials:</label><br>
+            <input type="text" id="initials" name="initals">
+        </form>
+        <ol id="answer">
+            <button>Submit</button>
+        </ol>
+    </section>
+
+    <section class="pageMiddle">
+        <h1>Highscores</h1>
+        <ol>
+            <li id="scoreboard">AB -22</li>
+        </ol>
+        <ol id="answer">
+            <button>Go Back</button>
+            <button>Clear Highscores</button>
+        </ol>
+    </section>
+
     <script src="assets/js/main.js"></script>
 </body>
 </html>

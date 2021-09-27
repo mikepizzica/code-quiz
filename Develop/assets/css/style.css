@@ -1,3 +1,66 @@
 body{
-    background: blue;
+    background: grey;
+}
+
+#pageTop {
+    display: flex;
+    justify-content: space-between;
+    padding:0px 10px;
+}
+
+.pageMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 18vw;
+}
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+li {
+    list-style-position: inside; padding-left: 8px;
+    background-color: pink;
+    margin: 5px;
+    padding:2px 8px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: pink;
+    border-radius: 5px;
+    padding:5px 10px;
+}
+
+ol {
+    margin: 0px;
+    padding: 0px;
+}
+
+hr {
+    background-color: black; 
+    height: 3px; 
+    border: 0;
+    margin: 0px 18vw;
+}
+
+#correct {
+    margin:0px;
+}
+
+#wrong {
+    margin:0px;
+}
+
+#scoreboard {
+    list-style-position: inside; padding-left: 8px;
+    background-color: rgba(255, 192, 203, 0.589);
+    margin: 5px;
+    padding:2px 8px;
+    border-radius: 5px;
 }
