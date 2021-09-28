@@ -9,6 +9,11 @@ var highScores =[];
 var secondsLeft = 0;
 var timerInterval = null;
 
+var highscoresButton = document.getElementById("highscores-link");
+highscoresButton.addEventListener("click", function(event){
+    showScoreboard();
+});
+
 function setTime() {
     secondsLeft = 30;
     timerH1.textContent = "Time: " + secondsLeft;
@@ -45,7 +50,6 @@ function start(){
 
     startButton.addEventListener("click", function(event){
         event.preventDefault();
-
         question1();
         setTime();
     });
@@ -319,6 +323,49 @@ function scoreboard(){
 
     highScores.push(currentScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
+
+    var scoreboardLI = highScores.forEach(function (item){
+        let li =document.createElement("li");
+        scoreboardOL.appendChild(li);
+        li.innerHTML += item;
+    })
+
+    var backButton = document.createElement("button");
+    backButton.setAttribute("id","back-button");
+    backButton.textContent = "Go Back";
+
+    var clearButton = document.createElement("button");
+    clearButton.setAttribute("id","clear-button");
+    clearButton.textContent = "Clear Highscores";
+
+    clearButton.addEventListener("click", function(event){
+        event.preventDefault();
+        highScores = [];
+        localStorage.clear();
+        scoreboardOL.setAttribute("hidden",true);
+    });
+
+    backButton.addEventListener("click", function(event){
+        event.preventDefault();
+        start();
+    });
+
+    pageMiddle.append(scoreboardH1, scoreboardOL, backButton,clearButton);
+    console.log("scoreboard");
+    console.log(highscoreName);
+
+    for(var i in highScores){
+        console.log(highScores[i]);
+    }
+}
+
+function showScoreboard(){
+    pageMiddle.innerHTML = "";
+
+    var scoreboardH1 = document.createElement("h1");
+    scoreboardH1.textContent = "Highscores";
+
+    var scoreboardOL = document.createElement("ol");
 
     var scoreboardLI = highScores.forEach(function (item){
         let li =document.createElement("li");
