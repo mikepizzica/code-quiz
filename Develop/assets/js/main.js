@@ -2,12 +2,13 @@ console.log("I'm connected");
 
 var pageMiddle =document.querySelector("#pageMiddle");
 var timerH1 = document.querySelector("#timer");
+var score = 0;
 
 var secondsLeft = 0;
 var timerInterval = null;
 
 function setTime() {
-    secondsLeft = 10;
+    secondsLeft = 30;
     timerH1.textContent = "Time: " + secondsLeft;
     // Sets interval in variable
     timerInterval = setInterval(function () {
@@ -21,6 +22,7 @@ function setTime() {
             // Calls function to create and append image
             // sendMessage();
             // * As a user, I want to lose the game when the timer runs out before I have guessed all the letters.
+            end();
         }
 
     }, 1000);
@@ -40,9 +42,9 @@ function start(){
     startButton.textContent = "Start";
 
     startButton.addEventListener("click", function(event){
-        event.preventDefault
+        event.preventDefault();
 
-        question();
+        question1();
         setTime();
     });
 
@@ -50,55 +52,179 @@ function start(){
     console.log("start");
 }
 
-function question(){
-    console.log("question here")
+function question1(){
+    console.log("question1")
     pageMiddle.innerHTML = "";
 
-    var questionH1 = document.createElement("h1");
-    questionH1.textContent = "Commonly used data types DO NOT include:";
+    var question1H1 = document.createElement("h1");
+    question1H1.textContent = "Commonly used data types DO NOT include:";
+    var question1Button1 = document.createElement("button");
+    question1Button1.textContent = "strings";
+    var question1Button2 = document.createElement("button");
+    question1Button2.textContent = "booleans";
+    var question1Button3 = document.createElement("button");
+    question1Button3.textContent = "alerts";
+    var question1Button4 = document.createElement("button");
+    question1Button4.textContent = "numbers";
 
-    var questionButton1 = document.createElement("button");
-    questionButton1.setAttribute("id","answer1");
-    questionButton1.textContent = "strings";
-
-    var questionButton2 = document.createElement("button");
-    questionButton2.setAttribute("id","answer2");
-    questionButton2.textContent = "booleans";
-
-    var questionButton3 = document.createElement("button");
-    questionButton3.setAttribute("id","answer3");
-    questionButton3.textContent = "alerts";
-
-    var questionButton4 = document.createElement("button");
-    questionButton4.setAttribute("id","answer4");
-    questionButton4.textContent = "numbers";
-
-    questionButton1.addEventListener("click", function(event){
+    question1Button1.addEventListener("click", function(event){
         event.preventDefault
-
+        question2();
         wrong();
     });
-
-    questionButton2.addEventListener("click", function(event){
+    question1Button2.addEventListener("click", function(event){
         event.preventDefault
-
+        question2();
         wrong();
     });
-
-    questionButton3.addEventListener("click", function(event){
+    question1Button3.addEventListener("click", function(event){
         event.preventDefault
-
+        question2();
         correct();
     });
-
-    questionButton4.addEventListener("click", function(event){
+    question1Button4.addEventListener("click", function(event){
         event.preventDefault
-
+        question2();
         wrong();
     });
+    pageMiddle.append(question1H1, question1Button1, question1Button2, question1Button3, question1Button4);
+}
 
-    pageMiddle.append(questionH1, questionButton1, questionButton2, questionButton3, questionButton4);
+function question2(){
+    console.log("question2")
+    pageMiddle.innerHTML = "";
 
+    var question2H1 = document.createElement("h1");
+    question2H1.textContent = "The condition in an if / else statement is enclosed within _____.";
+    var question2Button1 = document.createElement("button");
+    question2Button1.textContent = "quotes";
+    var question2Button2 = document.createElement("button");
+    question2Button2.textContent = "curly brackets";
+    var question2Button3 = document.createElement("button");
+    question2Button3.textContent = "parentheses";
+    var question2Button4 = document.createElement("button");
+    question2Button4.textContent = "square brackets";
+
+    question2Button1.addEventListener("click", function(event){
+        event.preventDefault
+        question3();
+        wrong();
+    });
+    question2Button2.addEventListener("click", function(event){
+        event.preventDefault
+        question3();
+        wrong();
+    });
+    question2Button3.addEventListener("click", function(event){
+        event.preventDefault
+        question3();
+        correct();
+    });
+    question2Button4.addEventListener("click", function(event){
+        event.preventDefault
+        question3();
+        wrong();
+    });
+    pageMiddle.append(question2H1, question2Button1, question2Button2, question2Button3, question2Button4);
+}
+
+function question3(){
+    console.log("question3")
+    pageMiddle.innerHTML = "";
+
+    var question3H1 = document.createElement("h1");
+    question3H1.textContent = "Arrays in JavaScript can be used to store _____.";
+    var question3Button1 = document.createElement("button");
+    question3Button1.textContent = "numbers and strings";
+    var question3Button2 = document.createElement("button");
+    question3Button2.textContent = "other arrays";
+    var question3Button3 = document.createElement("button");
+    question3Button3.textContent = "booleans";
+    var question3Button4 = document.createElement("button");
+    question3Button4.textContent = "all of the above";
+
+    question3Button1.addEventListener("click", function(event){
+        event.preventDefault();
+        wrong();
+        end();
+    });
+    question3Button2.addEventListener("click", function(event){
+        event.preventDefault
+        wrong();
+        end();
+    });
+    question3Button3.addEventListener("click", function(event){
+        event.preventDefault
+        wrong();
+        end();
+    });
+    question3Button4.addEventListener("click", function(event){
+        event.preventDefault
+        correct();
+        end();
+    });
+    pageMiddle.append(question3H1, question3Button1, question3Button2, question3Button3, question3Button4);
+}
+
+function wrong(){
+    console.log("wrong");
+    score = score-10;
+    secondsLeft = secondsLeft-10; 
+    console.log(score);
+
+    var wrongH1 = document.createElement("h1");
+    wrongH1.textContent = "wrong";
+    pageBottom.append(wrongH1);
+    setTimeout(function(){
+        pageBottom.innerHTML = "";
+    }, 500)
+}
+
+function correct(){
+    console.log("correct");
+    score = score+10;
+    console.log(score);
+
+    var wrongH1 = document.createElement("h1");
+    wrongH1.textContent = "correct";
+    pageBottom.append(wrongH1);
+    setTimeout(function(){
+        pageBottom.innerHTML = "";
+    }, 500)
+}
+
+function end(){
+    console.log("end");
+    pageMiddle.innerHTML = "";
+    secondsLeft = 0;
+    clearInterval(timerInterval);
+
+    var endH1 = document.createElement("h1");
+    endH1.textContent = "All done!";
+    var endP = document.createElement("p");
+    endP.textContent = "Your final score is " + score;
+    var endForm = document.createElement("form");
+    endForm.setAttribute("id","initials");
+    var endLabel = document.createElement("label");
+    endLabel.setAttribute("for","initials");
+    endLabel.textContent = "Enter initials: ";
+    var endInput = document.createElement("input");
+    endInput.setAttribute("type","text");
+    endInput.setAttribute("id","initals-input");
+    endInput.setAttribute("name","initials-input");
+    var submitButton = document.createElement("button");
+    submitButton.setAttribute("id","submit-button");
+    submitButton.textContent = "Submit";
+
+    submitButton.addEventListener("click", function(event){
+        event.preventDefault();
+        var highscoreName = endInput.value;
+        console.log(highscoreName);
+        console.log(score)
+    });
+
+    pageMiddle.append(endH1,endP,endForm)
+    initials.append(endLabel,endInput,submitButton)
 }
 
 start()
