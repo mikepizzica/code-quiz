@@ -3,6 +3,8 @@ console.log("I'm connected");
 var pageMiddle =document.querySelector("#pageMiddle");
 var timerH1 = document.querySelector("#timer");
 var score = 0;
+var highscoreName = "";
+var highScores =[];
 
 var secondsLeft = 0;
 var timerInterval = null;
@@ -48,6 +50,7 @@ function start(){
         setTime();
     });
 
+    score = 0
     pageMiddle.append(startH1, startP, startButton);
     console.log("start");
 }
@@ -294,13 +297,62 @@ function end(){
 
     submitButton.addEventListener("click", function(event){
         event.preventDefault();
-        var highscoreName = endInput.value;
+        highscoreName = endInput.value;
         console.log(highscoreName);
-        console.log(score)
+        console.log(score);
+        scoreboard();
     });
 
     pageMiddle.append(endH1,endP,endForm)
     initials.append(endLabel,endInput,submitButton)
+}
+
+function scoreboard(){
+    pageMiddle.innerHTML = "";
+
+    var scoreboardH1 = document.createElement("h1");
+    scoreboardH1.textContent = "Highscores";
+
+    var scoreboardOL = document.createElement("ol");
+    
+    var currentScore = highscoreName + " " + score;
+
+    highScores.push(currentScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
+    var scoreboardLI = highScores.forEach(function (item){
+        let li =document.createElement("li");
+        scoreboardOL.appendChild(li);
+        li.innerHTML += item;
+    })
+
+    var backButton = document.createElement("button");
+    backButton.setAttribute("id","back-button");
+    backButton.textContent = "Go Back";
+
+    var clearButton = document.createElement("button");
+    clearButton.setAttribute("id","clear-button");
+    clearButton.textContent = "Clear Highscores";
+
+    clearButton.addEventListener("click", function(event){
+        event.preventDefault();
+        highScores = [];
+        localStorage.clear();
+        scoreboardOL.setAttribute("hidden",true);
+    });
+
+    backButton.addEventListener("click", function(event){
+        event.preventDefault();
+        start();
+    });
+
+    pageMiddle.append(scoreboardH1, scoreboardOL, backButton,clearButton);
+    console.log("scoreboard");
+    console.log(highscoreName);
+
+    for(var i in highScores){
+        console.log(highScores[i]);
+    }
 }
 
 start()
