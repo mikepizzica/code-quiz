@@ -1,16 +1,30 @@
 console.log("I'm connected");
 
-// var imgTag = document.createElement("img");
-
-// imgTag.setAttribute("src", "assets/images/hoopla-is-dead.png");
-// imgTag.setAttribute("alt", "Start Test");
-
-// imgTag.addEventListener("click", function(){ 
-//     console.log("Maybe this will start");
-// });
-
-// document.body.appendChild(imgTag);
 var pageMiddle =document.querySelector("#pageMiddle");
+var timerH1 = document.querySelector("#timer");
+
+var secondsLeft = 0;
+var timerInterval = null;
+
+function setTime() {
+    secondsLeft = 10;
+    timerH1.textContent = "Time: " + secondsLeft;
+    // Sets interval in variable
+    timerInterval = setInterval(function () {
+        secondsLeft--;
+        timerH1.textContent = "Time: " + secondsLeft;
+        //   timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+        if (secondsLeft === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            // Calls function to create and append image
+            // sendMessage();
+            // * As a user, I want to lose the game when the timer runs out before I have guessed all the letters.
+        }
+
+    }, 1000);
+}
 
 function start(){
     pageMiddle.innerHTML = "";
@@ -29,11 +43,13 @@ function start(){
         event.preventDefault
 
         question();
+        setTime();
     });
 
     pageMiddle.append(startH1, startP, startButton);
     console.log("start");
 }
+
 function question(){
     console.log("question here")
     pageMiddle.innerHTML = "";
@@ -57,7 +73,33 @@ function question(){
     questionButton4.setAttribute("id","answer4");
     questionButton4.textContent = "numbers";
 
+    questionButton1.addEventListener("click", function(event){
+        event.preventDefault
+
+        wrong();
+    });
+
+    questionButton2.addEventListener("click", function(event){
+        event.preventDefault
+
+        wrong();
+    });
+
+    questionButton3.addEventListener("click", function(event){
+        event.preventDefault
+
+        correct();
+    });
+
+    questionButton4.addEventListener("click", function(event){
+        event.preventDefault
+
+        wrong();
+    });
+
     pageMiddle.append(questionH1, questionButton1, questionButton2, questionButton3, questionButton4);
+
 }
+
 start()
 
