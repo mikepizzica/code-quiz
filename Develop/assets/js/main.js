@@ -9,6 +9,12 @@ var highScores =[];
 var secondsLeft = 0;
 var timerInterval = null;
 
+if(localStorage.getItem("highScores") !== null){
+    highScores = JSON.parse(localStorage.getItem("highScores"));
+    console.log(typeof(highScores))
+    console.log(highScores)
+}
+
 var highscoresButton = document.getElementById("highscores-link");
 highscoresButton.addEventListener("click", function(event){
     showScoreboard();
@@ -324,10 +330,10 @@ function scoreboard(){
     highScores.push(currentScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
 
-    var scoreboardLI = highScores.forEach(function (item){
-        let li =document.createElement("li");
-        scoreboardOL.appendChild(li);
-        li.innerHTML += item;
+    highScores.forEach(function (item){
+    let li =document.createElement("li");
+    scoreboardOL.appendChild(li);
+    li.innerHTML += item;
     })
 
     var backButton = document.createElement("button");
@@ -367,10 +373,10 @@ function showScoreboard(){
 
     var scoreboardOL = document.createElement("ol");
 
-    var scoreboardLI = highScores.forEach(function (item){
-        let li =document.createElement("li");
-        scoreboardOL.appendChild(li);
-        li.innerHTML += item;
+    highScores.forEach(function (item){
+    let li = document.createElement("li");
+    scoreboardOL.appendChild(li);
+    li.innerHTML += item;
     })
 
     var backButton = document.createElement("button");
