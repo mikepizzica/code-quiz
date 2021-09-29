@@ -28,4 +28,4 @@ THEN I can save my initials and set my score on the board
 https://github.com/mikepizzica/code-quiz
 
 ## Screenshot
-![Screenshot of code quiz](.assets/images/hoopla-is-dead.png)
+![Screenshot of code quiz](./assets/images/screenshot-code-quiz.png)

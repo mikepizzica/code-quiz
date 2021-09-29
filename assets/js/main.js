@@ -93,6 +93,7 @@ function question1(){
         question2();
         wrong();
     });
+
     pageMiddle.append(question1H1, question1Button1, question1Button2, question1Button3, question1Button4);
 }
 
@@ -131,6 +132,7 @@ function question2(){
         question3();
         wrong();
     });
+
     pageMiddle.append(question2H1, question2Button1, question2Button2, question2Button3, question2Button4);
 }
 
@@ -169,6 +171,7 @@ function question3(){
         correct();
         question4();
     });
+
     pageMiddle.append(question3H1, question3Button1, question3Button2, question3Button3, question3Button4);
 }
 
@@ -207,6 +210,7 @@ function question4(){
         wrong();
         question5();
     });
+
     pageMiddle.append(question4H1, question4Button1, question4Button2, question4Button3, question4Button4);
 }
 
@@ -245,6 +249,7 @@ function question5(){
         correct();
         end();
     });
+    
     pageMiddle.append(question5H1, question5Button1, question5Button2, question5Button3, question5Button4);
 }
 
