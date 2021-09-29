@@ -25,7 +25,7 @@ THEN I can save my initials and set my score on the board
 ```
 
 ## Link
-https://github.com/mikepizzica/code-quiz
+https://mikepizzica.github.io/code-quiz/
 
 ## Screenshot
 ![Screenshot of code quiz](./assets/images/screenshot-code-quiz.png)
