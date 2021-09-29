@@ -1,46 +1,40 @@
-console.log("I'm connected");
-
+// declare global variables
 var pageMiddle =document.querySelector("#pageMiddle");
 var timerH1 = document.querySelector("#timer");
 var score = 0;
 var highscoreName = "";
 var highScores =[];
-
 var secondsLeft = 0;
 var timerInterval = null;
 
+// gets scores in local storage
 if(localStorage.getItem("highScores") !== null){
     highScores = JSON.parse(localStorage.getItem("highScores"));
-    console.log(typeof(highScores))
-    console.log(highScores)
 }
 
+// links "View Highscores" button to scoreboard
 var highscoresButton = document.getElementById("highscores-link");
 highscoresButton.addEventListener("click", function(event){
     showScoreboard();
 });
 
+// timer function
 function setTime() {
-    secondsLeft = 30;
+    secondsLeft = 60;
     timerH1.textContent = "Time: " + secondsLeft;
-    // Sets interval in variable
     timerInterval = setInterval(function () {
         secondsLeft--;
         timerH1.textContent = "Time: " + secondsLeft;
-        //   timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
 
+        // when timer value is less than or equal to zero, runs end function
         if (secondsLeft <= 0) {
-            // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Calls function to create and append image
-            // sendMessage();
-            // * As a user, I want to lose the game when the timer runs out before I have guessed all the letters.
             end();
         }
-
     }, 1000);
 }
 
+// function to create start page of quiz
 function start(){
     pageMiddle.innerHTML = "";
 
@@ -62,11 +56,10 @@ function start(){
 
     score = 0
     pageMiddle.append(startH1, startP, startButton);
-    console.log("start");
 }
 
+// function for first question of quiz
 function question1(){
-    console.log("question1")
     pageMiddle.innerHTML = "";
 
     var question1H1 = document.createElement("h1");
@@ -103,8 +96,8 @@ function question1(){
     pageMiddle.append(question1H1, question1Button1, question1Button2, question1Button3, question1Button4);
 }
 
+// function for second question of quiz
 function question2(){
-    console.log("question2")
     pageMiddle.innerHTML = "";
 
     var question2H1 = document.createElement("h1");
@@ -141,8 +134,8 @@ function question2(){
     pageMiddle.append(question2H1, question2Button1, question2Button2, question2Button3, question2Button4);
 }
 
+// function for third question of quiz
 function question3(){
-    console.log("question3")
     pageMiddle.innerHTML = "";
 
     var question3H1 = document.createElement("h1");
@@ -179,8 +172,8 @@ function question3(){
     pageMiddle.append(question3H1, question3Button1, question3Button2, question3Button3, question3Button4);
 }
 
+// function for fourth question of quiz
 function question4(){
-    console.log("question4")
     pageMiddle.innerHTML = "";
 
     var question4H1 = document.createElement("h1");
@@ -217,8 +210,8 @@ function question4(){
     pageMiddle.append(question4H1, question4Button1, question4Button2, question4Button3, question4Button4);
 }
 
+// function for fifth question of quiz
 function question5(){
-    console.log("question5")
     pageMiddle.innerHTML = "";
 
     var question5H1 = document.createElement("h1");
@@ -255,11 +248,10 @@ function question5(){
     pageMiddle.append(question5H1, question5Button1, question5Button2, question5Button3, question5Button4);
 }
 
+// function to change score and display message if wrong answer is chosen
 function wrong(){
-    console.log("wrong");
     score = score-10;
     secondsLeft = secondsLeft-10; 
-    console.log(score);
 
     var wrongH1 = document.createElement("h1");
     wrongH1.textContent = "wrong";
@@ -269,10 +261,9 @@ function wrong(){
     }, 500)
 }
 
+// function to change score and display message if correct answer is chosen
 function correct(){
-    console.log("correct");
     score = score+10;
-    console.log(score);
 
     var wrongH1 = document.createElement("h1");
     wrongH1.textContent = "correct";
@@ -282,8 +273,8 @@ function correct(){
     }, 500)
 }
 
+// function for submission page after quiz has been completed
 function end(){
-    console.log("end");
     pageMiddle.innerHTML = "";
     secondsLeft = 0;
     clearInterval(timerInterval);
@@ -308,8 +299,6 @@ function end(){
     submitButton.addEventListener("click", function(event){
         event.preventDefault();
         highscoreName = endInput.value;
-        console.log(highscoreName);
-        console.log(score);
         scoreboard();
     });
 
@@ -317,6 +306,7 @@ function end(){
     initials.append(endLabel,endInput,submitButton)
 }
 
+// function to show scores on a scoreboard after submitting above
 function scoreboard(){
     pageMiddle.innerHTML = "";
 
@@ -357,14 +347,9 @@ function scoreboard(){
     });
 
     pageMiddle.append(scoreboardH1, scoreboardOL, backButton,clearButton);
-    console.log("scoreboard");
-    console.log(highscoreName);
-
-    for(var i in highScores){
-        console.log(highScores[i]);
-    }
 }
 
+// function to show scores on a scoreboard if clicking the "View Highscores" button
 function showScoreboard(){
     pageMiddle.innerHTML = "";
 
@@ -400,12 +385,7 @@ function showScoreboard(){
     });
 
     pageMiddle.append(scoreboardH1, scoreboardOL, backButton,clearButton);
-    console.log("scoreboard");
-    console.log(highscoreName);
-
-    for(var i in highScores){
-        console.log(highScores[i]);
-    }
 }
 
+// calling the function to generate the start page
 start()

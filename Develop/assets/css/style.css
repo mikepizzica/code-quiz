@@ -1,13 +1,11 @@
-body{
-    background: grey;
-}
-
+/* container for the top of the page */
 #pageTop {
     display: flex;
     justify-content: space-between;
     padding:0px 10px;
 }
 
+/* container for the middle of the page */
 #pageMiddle {
     display: flex;
     justify-content: center;
@@ -16,6 +14,7 @@ body{
     margin: 0px 18vw;
 }
 
+/* container for the bottom of the page */
 #pageBottom {
     display: flex;
     justify-content: center;
@@ -23,14 +22,24 @@ body{
     flex-direction: column;
     margin: 0px 18vw;
 }
+
+/* styling for headers */
 h1 {
     text-align: center;
 }
 
+/* styling for p tag text */
 p {
     text-align: center;
 }
 
+/* styling for lists */
+ol {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* styling for list items */
 li {
     list-style-position: inside; padding-left: 8px;
     background-color: rgb(192, 255, 192);
@@ -39,32 +48,30 @@ li {
     border-radius: 5px;
 }
 
+/* styling for buttons and adding hover effect */
 button {
-    background-color: pink;
+    background-image: linear-gradient(pink, rgb(255, 134, 154));
     border-radius: 5px;
-    padding:5px 10px;
+    padding: 5px 10px;
+    margin: 2px;
+}
+button:hover {
+    background-image: linear-gradient(rgb(255, 228, 233),pink);
+    opacity: 0.75;
+    cursor: pointer;
 }
 
-ol {
-    margin: 0px;
-    padding: 0px;
-}
-
-hr {
-    background-color: black; 
-    height: 3px; 
-    border: 0;
-    margin: 0px 18vw;
-}
-
+/* styling for "correct" message that appears after questions */
 #correct {
     margin:0px;
 }
 
+/* styling for "wrong" message that appears after questions */
 #wrong {
     margin:0px;
 }
 
+/* styling for scoreboard items */
 #scoreboard {
     list-style-position: inside; padding-left: 8px;
     background-color: rgba(255, 192, 203, 0.589);
